@@ -26,7 +26,7 @@ public class TaskMenu extends AppCompatActivity {
 
     public void buttonAddTask(View view) {
         Button button = (Button) view;
-        String name, loc, desc;
+        String name, loc, desc, date, time;
         if((name = findViewById(R.id.name_line).toString()) .equals("")){
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
                 dlgAlert.setMessage("Name line must be filled.");
@@ -38,10 +38,11 @@ public class TaskMenu extends AppCompatActivity {
         }
         loc = findViewById(R.id.location_line).toString();
         desc = findViewById(R.id.description_line).toString();
-        DatePicker date = (DatePicker)findViewById(R.id.datePicker2);
-        TimePicker time = (TimePicker)findViewById(R.id.timePicker);
-
-
-        MainActivity._db.insertData("", "", "", "", "");
+        DatePicker dp = (DatePicker)findViewById(R.id.datePicker2);
+        TimePicker tp = (TimePicker)findViewById(R.id.timePicker);
+        date = dp.getDayOfMonth() + " - " + dp.getMonth() + " - " + dp.getMonth();
+        time = tp.getCurrentHour() + ":" + tp.getCurrentMinute();
+        MainActivity._db.insertData(name, loc, desc, date, time);
+        finish();
     }
 }
