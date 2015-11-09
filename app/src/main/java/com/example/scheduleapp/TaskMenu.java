@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class TaskMenu extends AppCompatActivity {
 
@@ -42,7 +43,12 @@ public class TaskMenu extends AppCompatActivity {
         TimePicker tp = (TimePicker)findViewById(R.id.timePicker);
         date = dp.getDayOfMonth() + " - " + dp.getMonth() + " - " + dp.getMonth();
         time = tp.getCurrentHour() + ":" + tp.getCurrentMinute();
-        MainActivity._db.insertData(name, loc, desc, date, time);
+        if(MainActivity._db.insertData(name, loc, desc, date, time)) {
+            Toast.makeText(TaskMenu.this, "Task Added", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(TaskMenu.this, "Task NOT Added", Toast.LENGTH_LONG).show();
+        }
         finish();
     }
 }
