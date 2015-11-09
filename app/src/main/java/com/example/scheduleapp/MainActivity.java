@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
-    public DatabaseHelper db;
+    public static DatabaseHelper _db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +53,15 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        _db = new DatabaseHelper(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//                Button button = (Button) view;
                 startActivity(new Intent(getApplicationContext(), TaskMenu.class));
             }
         });
-
-        db = new DatabaseHelper(this);
 
     }
 
@@ -90,11 +86,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void buttonOnClick(View v) {
-        Button button = (Button) v;
-        startActivity(new Intent(getApplicationContext(),TaskMenu.class));
     }
 
     /**
