@@ -24,6 +24,7 @@ public class TaskMenu extends AppCompatActivity {
     public void buttonAddTask(View view) {
         Button button = (Button) view;
         String name;
+        findViewById(0);
         MainActivity._db.insertData("", "", "", "", "");
     }
 }
