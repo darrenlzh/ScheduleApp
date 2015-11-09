@@ -17,7 +17,39 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="wrap_content">
+=======
+            android:layout_height="match_parent"
+            android:layout_alignEnd="@+id/scrollView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Name"
+                android:id="@+id/name"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/location"
+                android:layout_below="@+id/name"
+                android:layout_alignParentStart="true"
+                android:text="Location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Description"
+                android:id="@+id/description"
+                android:layout_below="@+id/location"
+                android:layout_alignParentStart="true" />
+>>>>>>> origin/master
 
             <EditText
                 android:layout_width="match_parent"
@@ -35,14 +67,22 @@
             <DatePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:id="@+id/datePicker"
                 android:layout_below="@+id/location"
                 android:layout_centerHorizontal="true" />
+=======
+                android:id="@+id/datePicker2"
+                android:layout_below="@+id/description"
+                android:layout_alignParentStart="true"
+                android:calendarViewShown="false" />
+>>>>>>> origin/master
 
             <TimePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/timePicker"
+<<<<<<< HEAD
                 android:timePickerMode="spinner"
                 android:layout_below="@+id/datePicker"
                 android:layout_centerHorizontal="true" />
@@ -61,6 +101,21 @@
                 android:id="@+id/button"
                 android:layout_below="@+id/description"
                 android:layout_centerHorizontal="true" />
+=======
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Task"
+                android:id="@+id/button"
+                android:layout_alignBottom="@+id/datePicker2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="43dp"
+                android:onClick="buttonAddTask" />
+>>>>>>> origin/master
 
         </RelativeLayout>
     </ScrollView>
