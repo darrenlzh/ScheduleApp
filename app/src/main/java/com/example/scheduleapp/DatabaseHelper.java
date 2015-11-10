@@ -42,8 +42,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertData(String name, String location, String desc, String date, String time) {
-
-        System.out.println("BITCH");
         SQLiteDatabase db = sInstance.getWritableDatabase();
         ContentValues content = new ContentValues();
         content.put(Feeder.FeedEntry.TASK_NAME, name);
