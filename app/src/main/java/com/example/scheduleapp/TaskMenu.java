@@ -11,6 +11,7 @@ import android.view.View;
 
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -28,28 +29,29 @@ public class TaskMenu extends AppCompatActivity {
     public void buttonAddTask(View view) {
         Button button = (Button) view;
         String name, loc, desc, date, time;
-        if((name = findViewById(R.id.title).toString()) .equals("")){
+        EditText text = (EditText)findViewById(R.id.name);
+        if((name = text.getText().toString()).equals("")) {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-                dlgAlert.setMessage("Name line must be filled.");
-                dlgAlert.setTitle("Error Message...");
-                dlgAlert.setPositiveButton("OK", null);
-                dlgAlert.setCancelable(true);
-                dlgAlert.create().show();
-                return;
+            dlgAlert.setMessage(name);
+            dlgAlert.setTitle("Error Message...");
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+            return;
         }
-        loc = findViewById(R.id.location).toString();
-        desc = findViewById(R.id.description).toString();
+        text = (EditText)findViewById(R.id.location);
+        loc = text.getText().toString();
+        text = (EditText)findViewById(R.id.description);
+        desc = text.getText().toString();
         DatePicker dp = (DatePicker)findViewById(R.id.datePicker);
         TimePicker tp = (TimePicker)findViewById(R.id.timePicker);
         date = dp.getDayOfMonth() + " - " + dp.getMonth() + " - " + dp.getMonth();
-        time = tp.getCurrentHour() + ":" + tp.getCurrentMinute();
+        time = " ";
         if(MainActivity._db.insertData(name, loc, desc, date, time)) {
             Toast.makeText(TaskMenu.this, "Task Added", Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(TaskMenu.this, "Task NOT Added", Toast.LENGTH_LONG).show();
         }
-        finish();
-        //
     }
 }
