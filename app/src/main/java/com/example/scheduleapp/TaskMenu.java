@@ -50,5 +50,6 @@ public class TaskMenu extends AppCompatActivity {
             Toast.makeText(TaskMenu.this, "Task NOT Added", Toast.LENGTH_LONG).show();
         }
         finish();
+        //
     }
 }
