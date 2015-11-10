@@ -4,8 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static DatabaseHelper sInstance;
     public static final String DATABASE_NAME = "Tasks.db";
     public static final int DATABASE_VERSION = 1;
     private static final String TEXT = " TEXT";
@@ -50,6 +52,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(Feeder.FeedEntry.TABLE_NAME, null, content);
         if(result == -1) { return false; }
         return true;
+    }
+
+    public static synchronized DatabaseHelper getInstance(Context context) {
+        if (sInstance == null) {
+            sInstance = new DatabaseHelper(context.getApplicationContext());
+        }
+        return sInstance;
     }
 
 }
