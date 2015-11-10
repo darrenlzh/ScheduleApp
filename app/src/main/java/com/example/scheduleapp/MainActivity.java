@@ -39,15 +39,15 @@ public class MainActivity extends AppCompatActivity {
 
     public static DatabaseHelper _db;
 
-    public MainActivity() {
-        _db = new DatabaseHelper(getApplicationContext());
-    }
+//    public MainActivity() {
+//        _db = new DatabaseHelper(this);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        _db = new DatabaseHelper(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
