@@ -14,11 +14,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_ENTRY =
             "CREATE TABLE " + Feeder.FeedEntry.TABLE_NAME + " (" +
                     Feeder.FeedEntry._ID + " INTEGER PRIMARY KEY," +
-                    Feeder.FeedEntry.TASK_NAME + TEXT +
-                    Feeder.FeedEntry.TASK_LOCATION + TEXT +
-                    Feeder.FeedEntry.TASK_DESC + TEXT +
-                    Feeder.FeedEntry.TASK_DATE + TEXT +
-                    Feeder.FeedEntry.TASK_TIME + TEXT;
+                    Feeder.FeedEntry.TASK_NAME + TEXT + "," +
+                    Feeder.FeedEntry.TASK_LOCATION + TEXT + "," +
+                    Feeder.FeedEntry.TASK_DESC + TEXT + "," +
+                    Feeder.FeedEntry.TASK_DATE + TEXT + "," +
+                    Feeder.FeedEntry.TASK_TIME + TEXT + ")";
     private static final String DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + Feeder.FeedEntry.TABLE_NAME;
 
@@ -42,7 +42,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertData(String name, String location, String desc, String date, String time) {
-        SQLiteDatabase db = this.getWritableDatabase();
+
+        System.out.println("BITCH");
+        SQLiteDatabase db = sInstance.getWritableDatabase();
         ContentValues content = new ContentValues();
         content.put(Feeder.FeedEntry.TASK_NAME, name);
         content.put(Feeder.FeedEntry.TASK_LOCATION, location);

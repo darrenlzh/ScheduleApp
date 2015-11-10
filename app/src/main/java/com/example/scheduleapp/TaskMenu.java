@@ -33,7 +33,7 @@ public class TaskMenu extends AppCompatActivity {
         EditText text = (EditText)findViewById(R.id.name);
         if((name = text.getText().toString()).equals("")) {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-            dlgAlert.setMessage(name);
+            dlgAlert.setMessage("Title field must be filled.");
             dlgAlert.setTitle("Error Message...");
             dlgAlert.setPositiveButton("OK", null);
             dlgAlert.setCancelable(true);
@@ -48,12 +48,13 @@ public class TaskMenu extends AppCompatActivity {
         TimePicker tp = (TimePicker)findViewById(R.id.timePicker);
         date = dp.getDayOfMonth() + " - " + dp.getMonth() + " - " + dp.getMonth();
         time = " ";
-        DatabaseHelper db = DatabaseHelper.getInstance(this);
+        DatabaseHelper db = DatabaseHelper.getInstance(getApplicationContext());
         if(db.insertData(name, loc, desc, date, time)) {
             Toast.makeText(TaskMenu.this, "Task Added", Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(TaskMenu.this, "Task NOT Added", Toast.LENGTH_LONG).show();
         }
+        finish();
     }
 }
