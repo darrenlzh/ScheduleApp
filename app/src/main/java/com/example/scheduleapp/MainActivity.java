@@ -1,6 +1,7 @@
 package com.example.scheduleapp;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
     public MainActivity() {
         _db = new DatabaseHelper(this);
+        _db.getWritableDatabase();
+
+
     }
 
     @Override
