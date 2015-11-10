@@ -19,12 +19,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     Feeder.FeedEntry.TASK_TIME + TEXT;
     private static final String DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + Feeder.FeedEntry.TABLE_NAME;
-    private SQLiteDatabase _db;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        _db = this.getWritableDatabase();
-
     }
 
     @Override
@@ -43,13 +40,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertData(String name, String location, String desc, String date, String time) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues content = new ContentValues();
         content.put(Feeder.FeedEntry.TASK_NAME, name);
         content.put(Feeder.FeedEntry.TASK_LOCATION, location);
         content.put(Feeder.FeedEntry.TASK_DESC, desc);
         content.put(Feeder.FeedEntry.TASK_DATE, date);
         content.put(Feeder.FeedEntry.TASK_TIME, time);
-        long result = _db.insert(Feeder.FeedEntry.TABLE_NAME, null, content);
+        long result = db.insert(Feeder.FeedEntry.TABLE_NAME, null, content);
         if(result == -1) { return false; }
         return true;
     }
