@@ -41,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     public MainActivity() {
         _db = new DatabaseHelper(this);
-        _db.getWritableDatabase();
-
-
     }
 
     @Override
@@ -111,14 +108,11 @@ public class MainActivity extends AppCompatActivity {
 //            return PlaceholderFragment.newInstance(position + 1);
             switch (position) {
                 case 0:
-                    DayView dayview = new DayView();
-                    return dayview;
+                    return new DayView();
                 case 1:
-                    WeekView weekview = new WeekView();
-                    return weekview;
+                    return new WeekView();
                 case 2:
-                    MonthView monthview = new MonthView();
-                    return monthview;
+                    return new MonthView();
             }
             return null;
         }
@@ -183,8 +177,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.dayview, container, false);
-            return view;
+            return inflater.inflate(R.layout.dayview, container, false);
         }
     }
     public static class WeekView extends Fragment {
@@ -192,8 +185,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.weekview, container, false);
-            return view;
+            return inflater.inflate(R.layout.weekview, container, false);
+
         }
     }
     public static class MonthView extends Fragment {
@@ -201,8 +194,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.monthview, container, false);
-            return view;
+            return inflater.inflate(R.layout.monthview, container, false);
+
         }
     }
 }

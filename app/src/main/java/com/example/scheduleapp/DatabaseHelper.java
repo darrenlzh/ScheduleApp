@@ -21,8 +21,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String SQL_String = "CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, Task_Name TEXT, Task_Location TEXT, Task_Desc TEXT, Task_Date TEXT, Task_Time TEXT";
-        db.execSQL(SQL_String);
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                TASK_NAME + " TEXT," +
+                TASK_LOCATION + " TEXT," +
+                TASK_DESC + " TEXT," +
+                TASK_DATE + " TEXT," +
+                TASK_TIME + " TEXT");
     }
 
     @Override
@@ -39,8 +44,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         content.put(TASK_DESC, desc);
         content.put(TASK_DATE, date);
         content.put(TASK_TIME, time);
-        long result;
-        if((result = db.insert(TABLE_NAME, null, content)) == -1) { return false; }
+        long result = db.insert(TABLE_NAME, null, content);
+        if(result == -1) { return false; }
         return true;
     }
 }
