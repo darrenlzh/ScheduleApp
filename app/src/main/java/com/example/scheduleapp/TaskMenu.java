@@ -48,9 +48,6 @@ public class TaskMenu extends AppCompatActivity {
         TimePicker tp = (TimePicker)findViewById(R.id.timePicker);
         date = dp.getDayOfMonth() + " - " + dp.getMonth() + " - " + dp.getMonth();
         time = " ";
-        if(MainActivity._db != null) {
-            Toast.makeText(TaskMenu.this, "Task Added", Toast.LENGTH_LONG).show();
-        }
         if(MainActivity._db.insertData(name, loc, desc, date, time)) {
             Toast.makeText(TaskMenu.this, "Task Added", Toast.LENGTH_LONG).show();
         }
