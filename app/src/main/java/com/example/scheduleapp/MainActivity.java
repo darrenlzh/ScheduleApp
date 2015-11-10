@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static DatabaseHelper _db;
 
     public MainActivity() {
-        _db = new DatabaseHelper(this);
+        _db = new DatabaseHelper(getApplicationContext());
     }
 
     @Override

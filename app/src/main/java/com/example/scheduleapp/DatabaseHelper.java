@@ -5,47 +5,51 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "Tasks";
-    public static final String TABLE_NAME = "Task_List";
-    public static final String ID = "ID";
-    public static final String TASK_NAME = "Task_Name";
-    public static final String TASK_LOCATION = "Task_Location";
-    public static final String TASK_DATE = "Task_Date";
-    public static final String TASK_TIME = "Task_Time";
-    public static final String TASK_DESC = "Task_Desc";
+    public class DatabaseHelper extends SQLiteOpenHelper {
+        public static final String DATABASE_NAME = "Tasks.db";
+        public static final int DATABASE_VERSION = 1;
+        private static final String TEXT = " TEXT";
+        private static final String CREATE_ENTRY =
+                "CREATE TABLE " + Feeder.FeedEntry.TABLE_NAME + " (" +
+                        Feeder.FeedEntry._ID + " INTEGER PRIMARY KEY," +
+                        Feeder.FeedEntry.TASK_NAME + TEXT +
+                        Feeder.FeedEntry.TASK_LOCATION + TEXT +
+                        Feeder.FeedEntry.TASK_DESC + TEXT +
+                        Feeder.FeedEntry.TASK_DATE + TEXT +
+                        Feeder.FeedEntry.TASK_TIME + TEXT;
+        private static final String DELETE_ENTRIES =
+                "DROP TABLE IF EXISTS " + Feeder.FeedEntry.TABLE_NAME;
 
-    public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +
-                ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                TASK_NAME + " TEXT," +
-                TASK_LOCATION + " TEXT," +
-                TASK_DESC + " TEXT," +
-                TASK_DATE + " TEXT," +
-                TASK_TIME + " TEXT");
+        db.execSQL(CREATE_ENTRY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL(DELETE_ENTRIES);
         onCreate(db);
+    }
+
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onUpgrade(db, oldVersion, newVersion);
     }
 
     public boolean insertData(String name, String location, String desc, String date, String time) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues content = new ContentValues();
-        content.put(TASK_NAME, name);
-        content.put(TASK_LOCATION, location);
-        content.put(TASK_DESC, desc);
-        content.put(TASK_DATE, date);
-        content.put(TASK_TIME, time);
-        long result = db.insert(TABLE_NAME, null, content);
+        content.put(Feeder.FeedEntry.TASK_NAME, name);
+        content.put(Feeder.FeedEntry.TASK_LOCATION, location);
+        content.put(Feeder.FeedEntry.TASK_DESC, desc);
+        content.put(Feeder.FeedEntry.TASK_DATE, date);
+        content.put(Feeder.FeedEntry.TASK_TIME, time);
+        long result = db.insert(Feeder.FeedEntry.TABLE_NAME, null, content);
         if(result == -1) { return false; }
         return true;
     }
+
 }
