@@ -68,6 +68,16 @@
                 android:layout_centerHorizontal="true"
                 android:visibility="invisible" />
 
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/allDay"
+                android:id="@+id/checkAllDay"
+                android:layout_below="@+id/timePicker"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"
+                android:checked="false" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

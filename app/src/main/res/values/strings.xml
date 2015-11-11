@@ -12,5 +12,6 @@
     <string name="taskAdded">Task Added</string>
     <string name="taskNotAdded">Task Not Added</string>
     <string name="newReminderTitle">New Reminder</string>
+    <string name="allDay">All day</string>
 
 </resources>
