@@ -57,11 +57,15 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), TaskMenu.class));
-                finish();
+                startActivityForResult(new Intent(getApplicationContext(), TaskMenu.class), 1);
             }
         });
+    }
 
+    @Override
+    protected void onActivityResult(int request, int result, Intent data) {
+        this.finish();
+        startActivity(getIntent());
     }
 
 
