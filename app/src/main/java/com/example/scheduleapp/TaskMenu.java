@@ -1,5 +1,6 @@
 package com.example.scheduleapp;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -10,9 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -25,6 +28,7 @@ public class TaskMenu extends AppCompatActivity {
         setContentView(R.layout.activity_task_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("New Reminder");
 
     }
 
@@ -33,9 +37,11 @@ public class TaskMenu extends AppCompatActivity {
         String name, loc, desc, date, time;
         EditText text = (EditText)findViewById(R.id.name);
         if((name = text.getText().toString()).equals("")) {
-            Toast.makeText(TaskMenu.this, "Please enter task title", Toast.LENGTH_LONG).show();
+            Toast.makeText(TaskMenu.this, "Title can't be left empty", Toast.LENGTH_LONG).show();
             ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
             scrollView.smoothScrollTo(0,0);
+            text.setFocusableInTouchMode(true);
+            text.requestFocus();
             return;
         }
         text = (EditText)findViewById(R.id.location);
@@ -55,5 +61,16 @@ public class TaskMenu extends AppCompatActivity {
             Toast.makeText(TaskMenu.this, "Task NOT Added", Toast.LENGTH_LONG).show();
         }
         finish();
+    }
+
+    public void buttonDateAndTimeContainer(View view) {
+        View date = (View) findViewById(R.id.datePicker);
+        View time = (View) findViewById(R.id.timePicker);
+        View description = (View) findViewById(R.id.description);
+        RelativeLayout.LayoutParams p = (RelativeLayout.LayoutParams) description.getLayoutParams();
+        p.addRule(RelativeLayout.BELOW, R.id.timePicker);
+        description.setLayoutParams(p);
+        date.setVisibility(View.VISIBLE);
+        time.setVisibility(View.VISIBLE);
     }
 }
