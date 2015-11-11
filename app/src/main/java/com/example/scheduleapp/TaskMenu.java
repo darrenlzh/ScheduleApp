@@ -1,5 +1,6 @@
 package com.example.scheduleapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +63,8 @@ public class TaskMenu extends AppCompatActivity {
         else {
             Toast.makeText(TaskMenu.this, R.string.taskNotAdded, Toast.LENGTH_LONG).show();
         }
+
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
 
