@@ -28,7 +28,7 @@ public class TaskMenu extends AppCompatActivity {
         setContentView(R.layout.activity_task_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("New Reminder");
+        setTitle(R.string.newReminderTitle);
 
     }
 
@@ -37,7 +37,7 @@ public class TaskMenu extends AppCompatActivity {
         String name, loc, desc, date, time;
         EditText text = (EditText)findViewById(R.id.name);
         if((name = text.getText().toString()).equals("")) {
-            Toast.makeText(TaskMenu.this, "Title can't be left empty", Toast.LENGTH_LONG).show();
+            Toast.makeText(TaskMenu.this, R.string.noTitleError, Toast.LENGTH_LONG).show();
             ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
             scrollView.smoothScrollTo(0,0);
             text.setFocusableInTouchMode(true);
@@ -55,10 +55,10 @@ public class TaskMenu extends AppCompatActivity {
         time = String.valueOf(tp.getCurrentHour()) + ":" + String.valueOf(tp.getCurrentMinute());
         DatabaseHelper db = DatabaseHelper.getInstance(getApplicationContext());
         if(db.insertData(name, loc, desc, date, time)) {
-            Toast.makeText(TaskMenu.this, "Task Added", Toast.LENGTH_LONG).show();
+            Toast.makeText(TaskMenu.this, R.string.taskAdded, Toast.LENGTH_LONG).show();
         }
         else {
-            Toast.makeText(TaskMenu.this, "Task NOT Added", Toast.LENGTH_LONG).show();
+            Toast.makeText(TaskMenu.this, R.string.taskNotAdded, Toast.LENGTH_LONG).show();
         }
         finish();
     }
