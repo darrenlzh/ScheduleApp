@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class TaskMenu extends AppCompatActivity {
 
-    public boolean dateAndTimeClicked = false;
+    private boolean showDateAndTime = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class TaskMenu extends AppCompatActivity {
         loc = text.getText().toString();
         text = (EditText)findViewById(R.id.description);
         desc = text.getText().toString();
-        if(dateAndTimeClicked) {
+        if(showDateAndTime) {
             DatePicker dp = (DatePicker) findViewById(R.id.datePicker);
             TimePicker tp = (TimePicker) findViewById(R.id.timePicker);
             date = String.valueOf(dp.getDayOfMonth()) + " - " + String.valueOf(dp.getMonth() + 1) + " - " + String.valueOf(dp.getYear());
@@ -65,17 +65,26 @@ public class TaskMenu extends AppCompatActivity {
     }
 
     public void buttonDateAndTimeContainer(View view) {
-        dateAndTimeClicked = true;
         View date = (View) findViewById(R.id.datePicker);
         View time = (View) findViewById(R.id.timePicker);
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkAllDay);
         View description = (View) findViewById(R.id.description);
         RelativeLayout.LayoutParams p = (RelativeLayout.LayoutParams) description.getLayoutParams();
-        p.addRule(RelativeLayout.BELOW, R.id.checkAllDay);
-        description.setLayoutParams(p);
-        date.setVisibility(View.VISIBLE);
-        time.setVisibility(View.VISIBLE);
-        checkBox.setVisibility(View.VISIBLE);
+        if(!showDateAndTime) {
+            p.addRule(RelativeLayout.BELOW, R.id.checkAllDay);
+            description.setLayoutParams(p);
+            date.setVisibility(View.VISIBLE);
+            time.setVisibility(View.VISIBLE);
+            checkBox.setVisibility(View.VISIBLE);
+            showDateAndTime = true;
+        } else {
+            p.addRule(RelativeLayout.BELOW, R.id.dateAndTimeButton);
+            description.setLayoutParams(p);
+            date.setVisibility(View.GONE);
+            time.setVisibility(View.INVISIBLE);
+            checkBox.setVisibility(View.INVISIBLE);
+            showDateAndTime = false;
+        }
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
