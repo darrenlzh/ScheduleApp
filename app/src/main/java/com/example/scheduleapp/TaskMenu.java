@@ -46,8 +46,9 @@ public class TaskMenu extends AppCompatActivity {
         desc = text.getText().toString();
         DatePicker dp = (DatePicker)findViewById(R.id.datePicker);
         TimePicker tp = (TimePicker)findViewById(R.id.timePicker);
-        date = dp.getDayOfMonth() + " - " + dp.getMonth() + " - " + dp.getMonth();
-        time = " ";
+        date = String.valueOf(dp.getDayOfMonth()) + " - " + String.valueOf(dp.getMonth() + 1) + " - " + String.valueOf(dp.getYear());
+        tp.clearFocus();
+        time = String.valueOf(tp.getCurrentHour()) + ":" + String.valueOf(tp.getCurrentMinute());
         DatabaseHelper db = DatabaseHelper.getInstance(getApplicationContext());
         if(db.insertData(name, loc, desc, date, time)) {
             Toast.makeText(TaskMenu.this, "Task Added", Toast.LENGTH_LONG).show();

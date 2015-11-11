@@ -2,6 +2,7 @@ package com.example.scheduleapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.ContactsContract;
@@ -59,6 +60,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             sInstance = new DatabaseHelper(context.getApplicationContext());
         }
         return sInstance;
+    }
+
+    public Cursor getAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery("select * from " + Feeder.FeedEntry.TABLE_NAME, null);
+        return result;
     }
 
 }
