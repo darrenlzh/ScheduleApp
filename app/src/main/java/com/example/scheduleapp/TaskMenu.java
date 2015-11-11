@@ -32,12 +32,7 @@ public class TaskMenu extends AppCompatActivity {
         String name, loc, desc, date, time;
         EditText text = (EditText)findViewById(R.id.name);
         if((name = text.getText().toString()).equals("")) {
-            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-            dlgAlert.setMessage("Title field must be filled.");
-            dlgAlert.setTitle("Error Message...");
-            dlgAlert.setPositiveButton("OK", null);
-            dlgAlert.setCancelable(true);
-            dlgAlert.create().show();
+            Toast.makeText(TaskMenu.this, "Please enter task title", Toast.LENGTH_LONG).show();
             return;
         }
         text = (EditText)findViewById(R.id.location);
