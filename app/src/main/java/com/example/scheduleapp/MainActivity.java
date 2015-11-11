@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -124,9 +126,13 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return "This Week";
                 case 2:
-                    return "This Month";
+                    return "Monthly";
             }
             return null;
+        }
+
+        public LinearLayout change(int i) {
+            return (LinearLayout) findViewById(i);
         }
     }
 
