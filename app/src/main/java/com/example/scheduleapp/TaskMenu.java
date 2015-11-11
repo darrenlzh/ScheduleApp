@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ public class TaskMenu extends AppCompatActivity {
         EditText text = (EditText)findViewById(R.id.name);
         if((name = text.getText().toString()).equals("")) {
             Toast.makeText(TaskMenu.this, "Please enter task title", Toast.LENGTH_LONG).show();
+            ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
+            scrollView.smoothScrollTo(0,0);
             return;
         }
         text = (EditText)findViewById(R.id.location);
