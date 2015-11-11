@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -65,10 +66,10 @@ public class TaskMenu extends AppCompatActivity {
     }
 
     public void buttonDateAndTimeContainer(View view) {
-        View date = (View) findViewById(R.id.datePicker);
-        View time = (View) findViewById(R.id.timePicker);
+        View date = findViewById(R.id.datePicker);
+        View time = findViewById(R.id.timePicker);
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkAllDay);
-        View description = (View) findViewById(R.id.description);
+        View description = findViewById(R.id.description);
         RelativeLayout.LayoutParams p = (RelativeLayout.LayoutParams) description.getLayoutParams();
         if(!showDateAndTime) {
             p.addRule(RelativeLayout.BELOW, R.id.checkAllDay);
@@ -89,8 +90,7 @@ public class TaskMenu extends AppCompatActivity {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                boolean timeIsVisible = true;
-                View time = (View) findViewById(R.id.timePicker);
+                View time = findViewById(R.id.timePicker);
                 CheckBox checkBox = (CheckBox) findViewById(R.id.checkAllDay);
                 RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) checkBox.getLayoutParams();
                 if (isChecked) {
