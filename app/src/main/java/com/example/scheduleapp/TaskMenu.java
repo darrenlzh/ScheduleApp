@@ -66,6 +66,7 @@ public class TaskMenu extends AppCompatActivity {
             Toast.makeText(TaskMenu.this, R.string.taskNotAdded, Toast.LENGTH_LONG).show();
         }
         setResult(RESULT_OK, null);
+        db.close();
         finish();
     }
 

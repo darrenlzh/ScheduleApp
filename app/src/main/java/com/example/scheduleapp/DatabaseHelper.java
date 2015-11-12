@@ -42,6 +42,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
+    @Override
+    public void close(){
+        sInstance = null;
+        super.close();
+    }
+
     public boolean insertData(String name, String location, String desc, String date, String time) {
         SQLiteDatabase db = sInstance.getWritableDatabase();
         ContentValues content = new ContentValues();
@@ -64,8 +70,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery("select * from " + Feeder.FeedEntry.TABLE_NAME, null);
-        return result;
+        return db.rawQuery("select * from " + Feeder.FeedEntry.TABLE_NAME, null);
+    }
+
+    public void clearData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Feeder.FeedEntry.TABLE_NAME, null, null);
     }
 
 }
