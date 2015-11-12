@@ -29,10 +29,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="60dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="30dp"
+            android:textColor="@color/colorAccent"
             android:text=""
-            android:id="@+id/dayOfMonth"
+            android:id="@+id/dayOfWeek"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/today"
             android:layout_marginTop="20dp"/>
@@ -40,19 +41,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="60dp"
             android:text=""
-            android:id="@+id/monthName"
+            android:id="@+id/dayOfMonth"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/dayOfMonth"/>
+            android:layout_below="@+id/dayOfWeek"
+            android:layout_marginTop="-10dp"/>
 
         <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/scrollView2"
-            android:layout_below="@+id/monthName"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/dayOfMonth"
+            android:layout_centerHorizontal="true"/>
 
 
     </RelativeLayout>
