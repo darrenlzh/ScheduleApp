@@ -77,7 +77,7 @@ public class DayView extends Fragment {
                     alert.setTitle(task._title);
                     String output;
                     if(task._time.equals("")) {
-                        output = "Time: All Day\n\n";
+                        output = "All Day\n\n";
                     } else {
                         output = "Time: " + task._time + "\n\n";
                     }
