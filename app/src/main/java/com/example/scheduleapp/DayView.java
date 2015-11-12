@@ -38,6 +38,7 @@ public class DayView extends Fragment {
         dayofWeek.setText(day);
         LinearLayout linearLayout = (LinearLayout)inflatedView.findViewById(R.id.dayVertical);
         DatabaseHelper db = DatabaseHelper.getInstance(getContext());
+//        db.clearData();
         Cursor cur = db.getAllData();
         if(cur.getCount() != 0) {
             while (cur.moveToNext()) {
