@@ -43,6 +43,7 @@ public class DayView extends Fragment {
             while (cur.moveToNext()) {
                 String foundDay;
                 foundDay = cur.getString(4);
+                if(foundDay.equals("")) { continue; }
                 foundDay = foundDay.substring(0, foundDay.indexOf(' '));
                 if (foundDay.equals(mDay + "")) {
                     _array.add(new Task(cur.getString(0), cur.getString(1), cur.getString(2), cur.getString(3), cur.getString(4), cur.getString(5)));
