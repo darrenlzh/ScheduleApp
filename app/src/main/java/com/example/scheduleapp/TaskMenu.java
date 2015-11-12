@@ -54,7 +54,12 @@ public class TaskMenu extends AppCompatActivity {
             TimePicker tp = (TimePicker) findViewById(R.id.timePicker);
             date = String.valueOf(dp.getDayOfMonth()) + " - " + String.valueOf(dp.getMonth() + 1) + " - " + String.valueOf(dp.getYear());
             tp.clearFocus();
-            time = String.valueOf(tp.getCurrentHour()) + ":" + String.valueOf(tp.getCurrentMinute());
+            time = String.valueOf(tp.getCurrentHour()) + ":";
+            String minute = String.valueOf(tp.getCurrentMinute());
+            if(minute.length() == 1) {
+                minute = minute + "0";
+            }
+            time = time + minute;
         } else {
             date =""; time = "";
         }
