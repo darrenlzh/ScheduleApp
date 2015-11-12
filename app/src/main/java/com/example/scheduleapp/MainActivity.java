@@ -141,34 +141,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-    public static class DayView extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.dayview, container, false);
-        }
-    }
-    public static class WeekView extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.weekview, container, false);
-
-        }
-    }
-    public static class MonthView extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.monthview, container, false);
-
-        }
-    }
 }
 
 

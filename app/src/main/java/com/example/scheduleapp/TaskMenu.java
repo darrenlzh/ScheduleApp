@@ -21,6 +21,7 @@ import android.widget.Toast;
 public class TaskMenu extends AppCompatActivity {
 
     private boolean showDateAndTime = false;
+    private  boolean timeIsVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +79,7 @@ public class TaskMenu extends AppCompatActivity {
             p.addRule(RelativeLayout.BELOW, R.id.checkAllDay);
             description.setLayoutParams(p);
             date.setVisibility(View.VISIBLE);
-            time.setVisibility(View.VISIBLE);
+            if(!timeIsVisible) time.setVisibility(View.VISIBLE);
             checkBox.setVisibility(View.VISIBLE);
             showDateAndTime = true;
         } else {
@@ -100,10 +101,12 @@ public class TaskMenu extends AppCompatActivity {
                     lp.addRule(RelativeLayout.BELOW, R.id.datePicker);
                     checkBox.setLayoutParams(lp);
                     time.setVisibility(View.INVISIBLE);
+                    timeIsVisible = true;
                 } else {
                     lp.addRule(RelativeLayout.BELOW, R.id.timePicker);
                     time.setVisibility(View.VISIBLE);
                     checkBox.setLayoutParams(lp);
+                    timeIsVisible = false;
                 }
 
             }
