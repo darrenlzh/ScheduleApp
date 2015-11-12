@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:weightSum="1"
@@ -12,11 +12,14 @@
         android:id="@+id/previousDayButton"
         android:background="@drawable/ic_expand_less_black_24dp"
         android:layout_alignParentTop = "true"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_centerHorizontal="true"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/dayViewSubContainer"
+        android:layout_below="@+id/previousDayButton"
+        android:layout_marginBottom="50dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,31 +27,30 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/today"
             android:id="@+id/today"
-            android:layout_below="@+id/previousDayButton"
             android:layout_centerHorizontal="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textColor="@color/colorAccent"
             android:text=""
             android:id="@+id/dayOfWeek"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/today"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="60dp"
+            android:textSize="60sp"
             android:text=""
             android:id="@+id/dayOfMonth"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/dayOfWeek"
-            android:layout_marginTop="-10dp"/>
+            android:layout_marginTop="-15dp"/>
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -61,8 +63,19 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/dayVertical"></LinearLayout>
+                android:id="@+id/dayVertical"
+                android:animateLayoutChanges="true"/>
+
         </ScrollView>
 
     </RelativeLayout>
-</LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nextDayButton"
+        android:background="@drawable/ic_expand_more_black_24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
