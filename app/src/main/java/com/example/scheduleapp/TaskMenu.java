@@ -61,7 +61,7 @@ public class TaskMenu extends AppCompatActivity {
                     hour = "0" + hour;
                 }
                 if (minute.length() == 1) {
-                    minute = minute + "0";
+                    minute = "0" + minute;
                 }
                 time = hour + ":" + minute;
             }
