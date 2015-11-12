@@ -58,7 +58,7 @@ public class TaskMenu extends AppCompatActivity {
                 String hour = String.valueOf(tp.getCurrentHour());
                 String minute = String.valueOf(tp.getCurrentMinute());
                 if (hour.length() == 1) {
-                    hour = hour + "0";
+                    hour = "0" + hour;
                 }
                 if (minute.length() == 1) {
                     minute = minute + "0";

@@ -55,7 +55,6 @@ public class DayView extends Fragment {
             String buff;
             System.out.println(task._time);
             if(task._time.equals("")) {
-                System.out.println("HERE");
                 buff = "All Day     ";
             }
             else {
@@ -76,10 +75,19 @@ public class DayView extends Fragment {
                     Task task = _array.get(b.getId());
                     AlertDialog alert = new AlertDialog.Builder(getContext()).create();
                     alert.setTitle(task._title);
-                    alert.setMessage(
-                            "Time: " + task._time + "\n\n" +
-                                    "Location: " + task._location + "\n\n" +
-                                    "Notes: " + task._desc);
+                    String output;
+                    if(task._time.equals("")) {
+                        output = "Time: All Day\n\n";
+                    } else {
+                        output = "Time: " + task._time + "\n\n";
+                    }
+                    if(!task._location.equals("")){
+                        output = output + "Location: " + task._location + "\n\n";
+                    }
+                    if(!task._desc.equals("")) {
+                        output = output + "Notes: " + task._desc;
+                    }
+                    alert.setMessage(output);
                     alert.setButton(AlertDialog.BUTTON_NEUTRAL, "BACK",
                             new DialogInterface.OnClickListener() {
                                 @Override
