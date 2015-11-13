@@ -17,15 +17,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/newTaskTitle"
-                android:id="@+id/newTaskTitle"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/white"/>
+                android:text="@string/todo"
+                android:id="@+id/todoTitle"
+                android:layout_gravity="center_horizontal"/>
 
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_task_menu" />
+    <include layout="@layout/content_todoview" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -23,6 +23,11 @@
             android:label="@string/title_activity_task_menu"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".ToDoView"
+            android:label="ToDoView"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

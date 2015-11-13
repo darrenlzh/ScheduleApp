@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true" tools:context=".MainActivity">
 
     <android.support.design.widget.AppBarLayout android:id="@+id/appbar"
-        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_width="match_parent" android:layout_height="0sp"
         android:paddingTop="@dimen/appbar_padding_top"
         android:visibility="gone"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -30,6 +30,16 @@
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_gravity="end|bottom" android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_add_white_24dp"
+        android:longClickable="false"
+        android:visibility="visible"
+        android:clickable="false"
+        app:backgroundTint="#FF4081"
+        android:scaleType="center" />
+
+    <android.support.design.widget.FloatingActionButton android:id="@+id/todofab"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom" android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_list_white_24dp"
         android:longClickable="false"
         android:visibility="visible"
         android:clickable="false"
