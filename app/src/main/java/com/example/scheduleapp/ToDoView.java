@@ -10,9 +10,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by darrenlim on 11/12/15.
- */
 public class ToDoView extends AppCompatActivity{
 
     private ArrayList<Task> _todolist;

@@ -67,7 +67,6 @@ public class DayView extends Fragment {
         }
         for (Task task : _array) {
             String buff;
-            System.out.println(task._time);
             if (task._time.equals("")) {
                 buff = "All Day     ";
             } else {
@@ -116,20 +115,12 @@ public class DayView extends Fragment {
                                     dialog.dismiss();
                                 }
                             });
-//                    RelativeLayout r = (RelativeLayout) view.findViewById(R.id.showTaskDialogContainer);
-//                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) r.getLayoutParams();
-//                    if(r)
                     alert.setView(view);
                     alert.show();
                 }
             });
-
         }
-
         db.close();
-
         return inflatedView;
     }
-
-
 }

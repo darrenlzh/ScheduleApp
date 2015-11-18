@@ -1,8 +1,6 @@
 package com.example.scheduleapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,16 +10,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -41,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    public DayView _dayView;
+    public WeekView _weekView;
+    public MonthView _monthView;
+
+    public static int _lastFragInt;
 
     protected static Calendar _calendar = Calendar.getInstance();
 
@@ -58,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setCurrentItem(_lastFragInt);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         todo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(getApplicationContext(), ToDoView.class), 1);
+                _lastFragInt = mViewPager.getCurrentItem();
+                startActivityForResult(new Intent(getApplicationContext(), ToDoView.class),1);
             }
         });
     }
@@ -83,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(getIntent());
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,10 +104,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -119,23 +112,29 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-//            return PlaceholderFragment.newInstance(position + 1);
             switch (position) {
+
                 case 0:
-                    return new DayView();
+                    if(_dayView == null) {
+                        return _dayView = new DayView();
+                    }
+                    else { return _dayView; }
                 case 1:
-                    return new WeekView();
+                    if(_weekView == null) {
+                        return _weekView = new WeekView();
+                    }
+                    else { return _weekView; }
                 case 2:
-                    return new MonthView();
+                    if(_monthView == null) {
+                        return _monthView = new MonthView();
+                    }
+                    else { return _monthView; }
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 3;
         }
 
@@ -151,18 +150,24 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
-
-        public LinearLayout change(int i) {
-            return (LinearLayout) findViewById(i);
-        }
     }
 
-    public static void nextDay(View v) {
-        MainActivity._calendar.add(Calendar.DATE, 1);
+    public void nextDay(View v) {
+        _calendar.add(Calendar.DATE, 1);
+        Fragment frg = _dayView;
+        final android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.detach(frg);
+        ft.attach(frg);
+        ft.commit();
     }
 
-    public static void prevDay(View v) {
-        MainActivity._calendar.add(Calendar.DATE, -1);
+    public void prevDay(View v) {
+        _calendar.add(Calendar.DATE, -1);
+        Fragment frg = _dayView;
+        final android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.detach(frg);
+        ft.attach(frg);
+        ft.commit();
     }
 
 }
