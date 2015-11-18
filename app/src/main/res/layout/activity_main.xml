@@ -46,4 +46,14 @@
         app:backgroundTint="#FF4081"
         android:scaleType="center" />
 
+    <android.support.design.widget.FloatingActionButton android:id="@+id/todayfab"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:longClickable="false"
+        android:visibility="visible"
+        android:clickable="false"
+        app:backgroundTint="#FF4081"
+        android:scaleType="center" />
+
+
 </android.support.design.widget.CoordinatorLayout>

@@ -1,5 +1,6 @@
 package com.example.scheduleapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public MonthView _monthView;
 
     public static int _lastFragInt;
-
+    public static int _calenderDiff;
     protected static Calendar _calendar = Calendar.getInstance();
 
     @Override
@@ -70,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 _lastFragInt = mViewPager.getCurrentItem();
                 startActivityForResult(new Intent(getApplicationContext(), ToDoView.class),1);
+            }
+        });
+
+        FloatingActionButton todayButton = (FloatingActionButton) findViewById(R.id.todayfab);
+        todayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(_calenderDiff != 0) {
+                    _lastFragInt = mViewPager.getCurrentItem();
+                    _calendar.add(Calendar.DATE, _calenderDiff);
+                    _calenderDiff = 0;
+                    finish();
+                    startActivity(getIntent());
+                }
             }
         });
     }
@@ -153,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nextDay(View v) {
+        _calenderDiff += -1;
         _calendar.add(Calendar.DATE, 1);
         Fragment frg = _dayView;
         final android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -162,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void prevDay(View v) {
+        _calenderDiff += 1;
         _calendar.add(Calendar.DATE, -1);
         Fragment frg = _dayView;
         final android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
