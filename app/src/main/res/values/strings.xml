@@ -16,5 +16,6 @@
     <string name="allDay">All day</string>
     <string name="today">Today</string>
     <string name="todo">To Do</string>
+    <string name= "weekOf">Week Of</string>
 
 </resources>

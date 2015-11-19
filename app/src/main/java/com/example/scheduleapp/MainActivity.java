@@ -174,6 +174,9 @@ public class MainActivity extends AppCompatActivity {
         final android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.detach(frg);
         ft.attach(frg);
+        frg = _weekView;
+        ft.detach(frg);
+        ft.attach(frg);
         ft.commit();
     }
 
@@ -182,6 +185,35 @@ public class MainActivity extends AppCompatActivity {
         _calendar.add(Calendar.DATE, -1);
         Fragment frg = _dayView;
         final android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.detach(frg);
+        ft.attach(frg);
+        frg = _weekView;
+        ft.detach(frg);
+        ft.attach(frg);
+        ft.commit();
+    }
+
+    public void nextWeek(View v) {
+        _calenderDiff += -7;
+        _calendar.add(Calendar.DATE, 7);
+        Fragment frg = _weekView;
+        final android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.detach(frg);
+        ft.attach(frg);
+        frg = _dayView;
+        ft.detach(frg);
+        ft.attach(frg);
+        ft.commit();
+    }
+
+    public void prevWeek(View v) {
+        _calenderDiff += 7;
+        _calendar.add(Calendar.DATE, -7);
+        Fragment frg = _weekView;
+        final android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.detach(frg);
+        ft.attach(frg);
+        frg = _dayView;
         ft.detach(frg);
         ft.attach(frg);
         ft.commit();

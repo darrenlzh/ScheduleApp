@@ -29,7 +29,6 @@ import java.util.PriorityQueue;
 
 public class DayView extends Fragment {
     private ArrayList<Task> _array;
-//    private ArrayList<Task> _todolist;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,30 +36,31 @@ public class DayView extends Fragment {
 
         View inflatedView = inflater.inflate(R.layout.dayview, container, false);
         _array = new ArrayList<>();
-//        _todolist = new ArrayList<>();
         TextView dayOfMonth = (TextView) inflatedView.findViewById(R.id.dayOfMonth);
         TextView dayofWeek = (TextView) inflatedView.findViewById(R.id.dayOfWeek);
 
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE");
-        String day = dayFormat.format(MainActivity._calendar.getTime());
-        int mDay = MainActivity._calendar.get(Calendar.DAY_OF_MONTH);
+        String dayWeek = dayFormat.format(MainActivity._calendar.getTime());
+        String dayMonth = String.valueOf(MainActivity._calendar.get(Calendar.DAY_OF_MONTH));
+        String monthYear = String.valueOf(MainActivity._calendar.get(Calendar.MONTH)+1);
 
-        dayOfMonth.setText(mDay + "");
-        dayofWeek.setText(day);
+        dayOfMonth.setText(dayMonth);
+        dayofWeek.setText(dayWeek);
         LinearLayout linearLayout = (LinearLayout) inflatedView.findViewById(R.id.dayVertical);
         DatabaseHelper db = DatabaseHelper.getInstance(getContext());
-//        db.clearData();
+        //db.clearData();
         Cursor cur = db.getAllData();
         if (cur.getCount() != 0) {
             while (cur.moveToNext()) {
-                String foundDay;
-                foundDay = cur.getString(4);
-                if (foundDay.equals("")) {
-//                    _todolist.add(new Task(cur.getString(0), cur.getString(1), cur.getString(2), cur.getString(3), "", ""));
+                String foundDate = cur.getString(4);
+                if (foundDate.equals("")) {
                     continue;
                 }
-                foundDay = foundDay.substring(0, foundDay.indexOf(' '));
-                if (foundDay.equals(mDay + "")) {
+
+                String foundDay = foundDate.substring(0, foundDate.indexOf(' '));
+                String foundMonth = foundDate.substring(foundDate.indexOf('-')+2);
+                foundMonth = foundMonth.substring(0, foundMonth.indexOf(' '));
+                if (foundDay.equals(dayMonth) && foundMonth.equals(monthYear)) {
                     _array.add(new Task(cur.getString(0), cur.getString(1), cur.getString(2), cur.getString(3), cur.getString(4), cur.getString(5)));
                 }
             }
