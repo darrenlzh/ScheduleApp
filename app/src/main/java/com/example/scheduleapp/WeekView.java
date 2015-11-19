@@ -3,6 +3,7 @@ package com.example.scheduleapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -36,6 +37,7 @@ public class WeekView extends Fragment {
         }
 
         TextView daysOfWeek = (TextView) inflatedView.findViewById(R.id.daysOfWeek);
+        daysOfWeek.setTextColor(Color.CYAN);
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE");
 
         String dayWeek = dayFormat.format(MainActivity._calendar.getTime());
@@ -50,17 +52,19 @@ public class WeekView extends Fragment {
             String dayMonth = String.valueOf(MainActivity._calendar.get(Calendar.DAY_OF_MONTH));
             String monthYear = String.valueOf(MainActivity._calendar.get(Calendar.MONTH) + 1);
             if (i == 0) {
-                daysOfWeek.setText(monthYear + "/" + dayMonth);
+                daysOfWeek.setText(MainActivity._numToMonth.get(MainActivity._calendar.get(Calendar.MONTH) + 1) + " " + dayMonth);
             }
             if (i == 6) {
-                daysOfWeek.setText(daysOfWeek.getText() + " - " + monthYear + "/" + dayMonth);
+                daysOfWeek.setText(daysOfWeek.getText() + " - " + MainActivity._numToMonth.get(MainActivity._calendar.get(Calendar.MONTH) + 1) + " " + dayMonth);
             }
 
             TextView dayOfWeek = new TextView(getContext());
+            dayOfWeek.setTextColor(Color.WHITE);
             dayOfWeek.setAllCaps(false);
-            dayOfWeek.setText(dayWeek);
+            dayOfWeek.setText(dayWeek + "    " + dayMonth);
             dayOfWeek.setGravity(Gravity.CENTER);
             linearLayout.addView(dayOfWeek);
+
 
             Cursor cur = db.getAllData();
             if (cur.getCount() != 0) {

@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.text.style.BackgroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +27,7 @@ import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class DayView extends Fragment {
@@ -36,6 +39,17 @@ public class DayView extends Fragment {
 
         View inflatedView = inflater.inflate(R.layout.dayview, container, false);
         _array = new ArrayList<>();
+        TextView text = (TextView)inflatedView.findViewById(R.id.today);
+
+        text.setVisibility(View.VISIBLE);
+        if (MainActivity._calenderDiff == 1) {
+            text.setText("Yesterday");
+        } else if(MainActivity._calenderDiff == -1) {
+            text.setText("Tomorrow");
+        } else if(MainActivity._calenderDiff == 0) {
+            text.setText("Today");
+        }else {text.setVisibility(View.INVISIBLE); }
+
         TextView dayOfMonth = (TextView) inflatedView.findViewById(R.id.dayOfMonth);
         TextView dayofWeek = (TextView) inflatedView.findViewById(R.id.dayOfWeek);
 
@@ -44,7 +58,7 @@ public class DayView extends Fragment {
         String dayMonth = String.valueOf(MainActivity._calendar.get(Calendar.DAY_OF_MONTH));
         String monthYear = String.valueOf(MainActivity._calendar.get(Calendar.MONTH)+1);
 
-        dayOfMonth.setText(dayMonth);
+        dayOfMonth.setText(MainActivity._numToMonth.get(MainActivity._calendar.get(Calendar.MONTH)+1) + " " + dayMonth);
         dayofWeek.setText(dayWeek);
         LinearLayout linearLayout = (LinearLayout) inflatedView.findViewById(R.id.dayVertical);
         DatabaseHelper db = DatabaseHelper.getInstance(getContext());

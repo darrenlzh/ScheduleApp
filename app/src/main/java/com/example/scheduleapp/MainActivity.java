@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The {@link ViewPager} that will host the section contents.
      */
+
     private ViewPager mViewPager;
     public DayView _dayView;
     public WeekView _weekView;
     public MonthView _monthView;
 
+    public static HashMap<Integer, String> _numToMonth;
     public static int _lastFragInt;
     public static int _calenderDiff;
     protected static Calendar _calendar = Calendar.getInstance();
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        if(_numToMonth == null) { initHM(); }
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -217,6 +222,23 @@ public class MainActivity extends AppCompatActivity {
         ft.detach(frg);
         ft.attach(frg);
         ft.commit();
+    }
+
+    private void initHM() {
+        _numToMonth = new HashMap<>();
+        _numToMonth.put(1, "Jan");
+        _numToMonth.put(2, "Feb");
+        _numToMonth.put(3, "Mar");
+        _numToMonth.put(4, "Apr");
+        _numToMonth.put(5, "May");
+        _numToMonth.put(6, "Jun");
+        _numToMonth.put(7, "Jul");
+        _numToMonth.put(8, "Aug");
+        _numToMonth.put(9, "Sep");
+        _numToMonth.put(10, "Oct");
+        _numToMonth.put(11, "Nov");
+        _numToMonth.put(12, "Dec");
+
     }
 
 }
