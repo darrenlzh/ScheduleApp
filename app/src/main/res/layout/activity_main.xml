@@ -33,7 +33,7 @@
         android:longClickable="false"
         android:visibility="visible"
         android:clickable="false"
-        app:backgroundTint="#00FFFF"
+        app:backgroundTint="@color/colorAccent"
         android:scaleType="center" />
 
     <android.support.design.widget.FloatingActionButton android:id="@+id/todofab"
@@ -43,7 +43,7 @@
         android:longClickable="false"
         android:visibility="visible"
         android:clickable="false"
-        app:backgroundTint="#00FFFF"
+        app:backgroundTint="@color/colorAccent"
         android:scaleType="center" />
 
     <android.support.design.widget.FloatingActionButton android:id="@+id/todayfab"
@@ -52,7 +52,7 @@
         android:longClickable="false"
         android:visibility="visible"
         android:clickable="false"
-        app:backgroundTint="#00FFFF"
+        app:backgroundTint="@color/colorAccent"
         android:scaleType="center" />
 
 
