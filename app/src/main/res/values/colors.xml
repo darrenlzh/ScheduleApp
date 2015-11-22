@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryPink">#FF4081</color>
-    <color name="colorPrimaryDark">#000000</color>
+
+    <!-- COLORS -->
     <color name="pink">#FF4081</color>
     <color name="white">#FFFFFF</color>
-    <color name="colorAccent">#00FFFF</color>
-    <color name="colorPrimary">#00FFFF</color>
-    <color name="black">#000000</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="gray">#333333</color>
+    <!-- END COLORS -->
+
+    <color name="colorPrimary">@color/cyan</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="background">@color/gray</color>
+    <color name="colorAccent">@color/cyan</color>
+    <color name="colorContrast">@color/white</color>
+
 </resources>

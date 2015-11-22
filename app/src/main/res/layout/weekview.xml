@@ -5,17 +5,17 @@
     android:id="@+id/LinearLayout"
     android:focusableInTouchMode="false"
     android:weightSum="1"
-    android:background="#000000">
+    android:background="@color/background">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/previousWeekButton"
         android:background="@drawable/ic_expand_less_black_24dp"
-        android:layout_alignParentTop = "true"
+        android:layout_marginTop="55dp"
         android:layout_centerHorizontal="true"
         android:onClick="prevWeek"
-        android:backgroundTint="#ffffff" />
+        android:backgroundTint="@color/colorContrast" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/weekOf"
             android:id="@+id/weekOf"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorContrast"
             android:layout_centerHorizontal="true"/>
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="30sp"
-            android:textColor="#00ffff"
+            android:textColor="@color/colorAccent"
             android:text=""
             android:id="@+id/daysOfWeek"
             android:layout_centerHorizontal="true"
@@ -70,6 +70,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="nextWeek"
-        android:backgroundTint="#ffffff" />
+        android:backgroundTint="@color/colorContrast" />
 
 </RelativeLayout>

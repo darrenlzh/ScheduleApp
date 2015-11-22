@@ -17,5 +17,6 @@
     <string name="today">Today</string>
     <string name="todo">To Do</string>
     <string name= "weekOf">Week Of</string>
+    <string name="drawer_header_text">Menu</string>
 
 </resources>
